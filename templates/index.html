@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mordisco — Estoque da Cantina</title>
+  <meta name="description" content="Mordisco: sistema de gerenciamento do estoque da cantina escolar.">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- ================= CABEÇALHO ================= -->
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a class="marca" href="/">
+        <span class="logo" aria-hidden="true">
+          <!-- biscoito mordido -->
+          <svg viewBox="0 0 64 64" role="img" aria-label="Mordisco">
+            <defs>
+              <mask id="mascara-mordida">
+                <rect width="64" height="64" fill="#fff"></rect>
+                <circle cx="49" cy="15" r="12" fill="#000"></circle>
+              </mask>
+            </defs>
+            <circle cx="32" cy="32" r="26" fill="currentColor" mask="url(#mascara-mordida)"></circle>
+            <circle cx="22" cy="24" r="3.4" fill="#FFF6E9"></circle>
+            <circle cx="34" cy="18" r="2.6" fill="#FFF6E9"></circle>
+            <circle cx="25" cy="42" r="3" fill="#FFF6E9"></circle>
+            <circle cx="38" cy="40" r="2.4" fill="#FFF6E9"></circle>
+          </svg>
+        </span>
+        <span class="marca-texto">
+          <span class="marca-nome">Mordisco</span>
+          <span class="marca-legenda">estoque da cantina</span>
+        </span>
+      </a>
+
+      <span class="selo-cabecalho">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-mini">
+          <path d="M4 12h16M4 7h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
+        </svg>
+        Cardápio de hoje
+      </span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= CAPA ================= -->
+    <section class="capa">
+      <!-- desenhos de alimentos flutuando -->
+      <span class="desenho desenho-1" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path d="M16 22h32l-4 30a5 5 0 0 1-5 4H25a5 5 0 0 1-5-4Z" fill="#FF7A18" opacity=".18"></path>
+          <path d="M16 22h32l-4 30a5 5 0 0 1-5 4H25a5 5 0 0 1-5-4Z" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linejoin="round"></path>
+          <path d="M14 20h36" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linecap="round"></path>
+          <path d="M36 20 43 6" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linecap="round"></path>
+        </svg>
+      </span>
+      <span class="desenho desenho-2" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path d="M18 30h28l-3 22a4 4 0 0 1-4 3H25a4 4 0 0 1-4-3Z" fill="#FF7A18" opacity=".2"></path>
+          <path d="M18 30h28l-3 22a4 4 0 0 1-4 3H25a4 4 0 0 1-4-3Z" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linejoin="round"></path>
+          <rect x="16" y="9" width="6" height="18" rx="3" fill="#FFC48A" stroke="#E85D04" stroke-width="2.4" transform="rotate(-14 19 18)"></rect>
+          <rect x="26" y="6" width="6" height="20" rx="3" fill="#FFC48A" stroke="#E85D04" stroke-width="2.4"></rect>
+          <rect x="36" y="9" width="6" height="18" rx="3" fill="#FFC48A" stroke="#E85D04" stroke-width="2.4" transform="rotate(14 39 18)"></rect>
+        </svg>
+      </span>
+      <span class="desenho desenho-3" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path d="M20 34h24l-9 22a5 5 0 0 1-7 0Z" fill="#FF7A18" opacity=".2"></path>
+          <path d="M20 34h24l-9 22a5 5 0 0 1-7 0Z" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linejoin="round"></path>
+          <circle cx="32" cy="26" r="12" fill="#FF7A18" opacity=".2"></circle>
+          <circle cx="32" cy="26" r="12" fill="none" stroke="#E85D04" stroke-width="3.2"></circle>
+          <circle cx="41" cy="20" r="7" fill="#FFF6E9" stroke="#E85D04" stroke-width="3"></circle>
+        </svg>
+      </span>
+      <span class="desenho desenho-4" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path d="M32 16c11 0 17 8 17 18 0 11-8 18-17 18s-17-7-17-18c0-10 6-18 17-18Z" fill="#FF7A18" opacity=".2"></path>
+          <path d="M32 16c11 0 17 8 17 18 0 11-8 18-17 18s-17-7-17-18c0-10 6-18 17-18Z" fill="none" stroke="#E85D04" stroke-width="3.2"></path>
+          <path d="M22 16h20M32 9v14" fill="none" stroke="#E85D04" stroke-width="3.2" stroke-linecap="round"></path>
+        </svg>
+      </span>
+
+      <p class="selo">
+        <span class="selo-ponto" aria-hidden="true"></span>
+        Gestão de estoque · Cantina escolar
+      </p>
+
+      <h1>O estoque da cantina,<br><span class="destaque">sem mistério!</span></h1>
+
+      <p class="subtitulo">
+        Cadastre os lanchinhos, acompanhe o que ainda tem na prateleira e veja
+        quanto vale tudo isso — direto do nosso banco de dados.
+      </p>
+    </section>
+
+    <!-- ================= RESUMO ================= -->
+    <section class="resumo" aria-label="Resumo do estoque">
+      <article class="cartao-resumo">
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 8h16l-1.6 11.2A2 2 0 0 1 16.4 21H7.6a2 2 0 0 1-2-1.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <div class="resumo-texto">
+          <p class="rotulo">Itens na lista</p>
+          <p class="valor" id="total-produtos">0</p>
+          <p class="nota">produtos cadastrados</p>
+        </div>
+      </article>
+
+      <article class="cartao-resumo">
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <circle cx="9" cy="10" r="1.3" fill="currentColor"></circle>
+            <circle cx="14" cy="9" r="1.3" fill="currentColor"></circle>
+            <circle cx="12" cy="14" r="1.3" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <div class="resumo-texto">
+          <p class="rotulo">Porções guardadas</p>
+          <p class="valor" id="total-unidades">0</p>
+          <p class="nota">unidades no estoque</p>
+        </div>
+      </article>
+
+      <article class="cartao-resumo cartao-resumo-destaque">
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v18M8 7h6.2a3.4 3.4 0 0 1 0 6.8H8m0 0h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <div class="resumo-texto">
+          <p class="rotulo">Valor do estoque</p>
+          <p class="valor" id="valor-total">R$ 0,00</p>
+          <p class="nota">quanto vale tudo junto</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ================= FORMULÁRIO + LISTA ================= -->
+    <section class="painel">
+
+      <!-- ---------- Cadastro ---------- -->
+      <div class="cartao">
+        <h2>Cadastrar produto</h2>
+        <p class="ajuda">Preencha os campos e salve. O lanche aparece na lista na hora.</p>
+
+        <form id="form-produto" novalidate>
+          <div class="campo">
+            <label for="nome">Nome do produto</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex.: Pão de queijo" maxlength="60" required>
+          </div>
+
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="quantidade">Quantidade</label>
+              <input type="number" id="quantidade" name="quantidade" min="0" step="1" value="1" required>
+            </div>
+
+            <div class="campo">
+              <label for="preco">Preço unitário (R$)</label>
+              <input type="number" id="preco" name="preco" min="0" step="0.01" placeholder="0,00" required>
+            </div>
+          </div>
+
+          <button type="submit" class="botao" id="botao-salvar">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-botao">
+              <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
+            </svg>
+            <span>Salvar no estoque</span>
+          </button>
+
+          <p class="dica">
+            O valor total de cada produto é calculado automaticamente:
+            quantidade &times; preço unitário.
+          </p>
+        </form>
+      </div>
+
+      <!-- ---------- Lista ---------- -->
+      <div class="cartao">
+        <h2>O que tem na prateleira</h2>
+        <p class="ajuda">Produtos salvos no banco de dados da cantina.</p>
+
+        <div class="cabecalho colunas">
+          <span class="c-nome">Produto</span>
+          <span class="c-qtd">Qtd.</span>
+          <span class="c-preco">Preço unitário</span>
+          <span class="c-total">Total no estoque</span>
+          <span class="c-acao"></span>
+        </div>
+
+        <div id="lista-produtos" class="lista" aria-live="polite">
+          <!-- os produtos são desenhados aqui pelo JavaScript -->
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer class="rodape">
+    <p><strong>Mordisco</strong> · sistema de estoque da cantina</p>
+    <p>Projeto da Atividade 3 — HTML + CSS + JavaScript + Flask + SQLite</p>
+  </footer>
+
+  <!-- ================= MENSAGENS ================= -->
+  <div id="caixa-mensagem" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

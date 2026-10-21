@@ -1,0 +1,16 @@
+# Ambiente virtual do Python
+.venv/
+venv/
+
+# Arquivos do Python
+__pycache__/
+*.py[cod]
+
+# Banco de dados local (o app cria um novo automaticamente)
+*.db
+
+# Sistema operacional / editores
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
