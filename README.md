@@ -78,6 +78,7 @@ mordisco/
 ├── requirements.txt    # dependências (Flask e Flask-Cors)
 ├── instalar.bat        # instala as dependências (uma vez só)
 ├── iniciar.bat         # abre o sistema (use este no dia a dia)
+├── publicar.bat        # publica no GitHub
 ├── .gitignore
 └── README.md
 ```
@@ -156,19 +157,31 @@ estiver fora do ar a pessoa vê uma mensagem em vez de a tela quebrar.
 
 ## 🚀 Publicando no GitHub
 
-O projeto já vem com o `.gitignore` pronto (ele não sobe o `.venv` nem o banco
-de dados). No terminal, dentro da pasta do projeto:
+### O jeito fácil (sem digitar comando)
+
+1. Entre no **https://github.com/new** e crie o repositório:
+   - Nome: `mordisco`
+   - **Desmarque** "Add a README file" e "Add .gitignore" (o projeto já tem os dois)
+   - Clique em **Create repository**
+2. Dê dois cliques em **`publicar.bat`** e responda as 3 perguntas
+   (nome, e-mail e seu usuário do GitHub).
+3. Vai abrir uma janela do navegador para você entrar no GitHub — é só
+   confirmar. O repositório é atualizado e a página dele abre sozinha.
+
+### O jeito manual (se preferir o terminal)
 
 ```bash
-git init
-git add .
-git commit -m "Mordisco: sistema de estoque da cantina (Atividade 3)"
-git branch -M main
 git remote add origin https://github.com/SEU_USUARIO/mordisco.git
 git push -u origin main
 ```
 
-Depois é só abrir o link do repositório e conferir que está tudo lá.
+> **Dica:** se o Git pedir senha, use um *Personal Access Token* (Settings →
+> Developer settings → Personal access tokens → Generate new token), **não** a
+> senha da sua conta. Se você tem o GitHub CLI instalado, `gh auth login`
+> resolve isso de uma vez.
+
+O `.gitignore` já está configurado: ele não sobe o `.venv` nem o banco de
+dados `estoque.db` para o GitHub.
 
 ---
 
