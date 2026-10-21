@@ -1,203 +1,101 @@
 # 🍪 Mordisco — Estoque da Cantina
 
-Sistema web para gerenciar o estoque da cantina de uma escola: você cadastra os
-lanches, vê o que ainda tem na prateleira e acompanha o valor de tudo.
+✨ Um projeto web desenvolvido para facilitar o **gerenciamento do estoque de uma cantina escolar**, permitindo cadastrar lanches, acompanhar as quantidades disponíveis e consultar o valor total dos produtos em estoque.
 
-Feito em **HTML + CSS + JavaScript** no front-end e **Python + Flask + SQLite**
-no back-end — a página conversa com a API usando `fetch()` (GET e POST).
+Com uma interface prática e intuitiva, o **Mordisco** ajuda a organizar os produtos da cantina, tornando o controle do que entra e do que ainda está disponível na prateleira mais simples e eficiente.
 
 ---
 
-## 🖼️ Como fica
+# 🏪 Demonstração do Projeto
 
-> *(Dica: depois de rodar o sistema, tire um print da janela do navegador e
-> cole a imagem aqui no README, entre estas linhas e o fim do bloco.)*
+A aplicação funciona como um **sistema digital de controle de estoque**, no qual o usuário pode cadastrar produtos e acompanhar suas informações de maneira organizada.
 
----
+💡 O sistema conecta uma interface web a um back-end com banco de dados, permitindo registrar e consultar os produtos cadastrados.
 
-## 🚀 Como rodar (3 passos)
-
-### 1º — Instale o Python (uma vez só)
-
-Se você ainda não tem Python no computador:
-
-1. Baixe em **https://www.python.org/downloads/**
-2. Ao instalar, **marque a caixinha "Add Python to PATH"** (é importantinho!)
-3. Pronto.
-
-### 2º — Instale as dependências (uma vez só)
-
-Abra a pasta do projeto e **dê dois cliques em `instalar.bat`**.
-
-Esse arquivo cria o *ambiente virtual* (a pasta `.venv`) e baixa o Flask e o
-Flask-Cors. Só precisa de internet nessa etapa. Quando aparecer
-**"Pronto! Agora é só dar dois cliques no iniciar.bat"**, pode fechar a janela.
-
-### 3º — Use o sistema
-
-Dê dois cliques em **`iniciar.bat`**.
-
-Ele sobe o servidor e **abre o navegador sozinho** em
-`http://localhost:5000`. Para encerrar, feche a janela preta do servidor ou
-aperte `CTRL + C` dentro dela.
-
-> Não precisa digitar comando nenhum no dia a dia — o `iniciar.bat` faz tudo.
+🍪 Cadastro de lanches e produtos com nome, quantidade e preço  
+📦 Visualização dos produtos disponíveis no estoque  
+💰 Cálculo do valor total dos produtos em estoque  
+🔄 Comunicação entre front-end e back-end por meio de uma API  
+🗄️ Armazenamento dos dados em um banco de dados SQLite
 
 ---
 
-## ✅ Como testar
+# 🧠 Conceitos Praticados
 
-1. Abra o sistema pelo `iniciar.bat`.
-2. No quadro **"Cadastrar produto"**, preencha:
-   - **Nome do produto** — ex.: `Pão de queijo`
-   - **Quantidade** — ex.: `24`
-   - **Preço unitário (R$)** — ex.: `4.50`
-3. Clique em **Salvar no estoque**.
-4. Pronto! O produto aparece na lista **sem a página recarregar**, uma
-   plaquinha verde confirma o sucesso e os valores do resumo se atualizam.
-5. Para tirar um produto do estoque, clique no botão da lixeira ao lado dele.
+Este projeto permite desenvolver conhecimentos importantes sobre programação, desenvolvimento web e gerenciamento de dados:
 
-Os dados ficam salvos no arquivo `estoque.db` (SQLite), na mesma pasta do
-projeto — se você fechar e abrir o sistema de novo, tudo continua lá.
+🧩 **Programação orientada a objetos**  
+Organização da lógica do sistema por meio de classes e estruturas responsáveis pelos produtos e pelo estoque.
 
----
+🌐 **Desenvolvimento de APIs com Flask**  
+Criação de rotas no back-end para receber requisições e fornecer informações sobre os produtos cadastrados.
 
-## 📁 Estrutura do projeto
+⚡ **Requisições HTTP com `fetch()`**  
+Comunicação entre o front-end e a API utilizando os métodos `GET`, para consultar dados, e `POST`, para enviar novos registros.
 
-```
-mordisco/
-├── app.py              # aplicação Flask e as rotas da API
-├── produto.py          # classe Produto (um lanche: nome, quantidade, preço)
-├── estoque.py          # classe Estoque (lista, cadastro e totais)
-├── templates/
-│   └── index.html      # a página do sistema
-├── static/
-│   ├── style.css       # o design (creme + laranja)
-│   ├── script.js       # a ligação com a API (fetch GET e POST)
-│   └── favicon.svg     # o ícone do site
-├── requirements.txt    # dependências (Flask e Flask-Cors)
-├── instalar.bat        # instala as dependências (uma vez só)
-├── iniciar.bat         # abre o sistema (use este no dia a dia)
-├── publicar.bat        # publica no GitHub
-├── .gitignore
-└── README.md
-```
+🗄️ **Banco de dados SQLite**  
+Armazenamento e consulta das informações dos produtos de forma persistente.
+
+💰 **Lógica de programação e cálculos**  
+Cálculo do valor total do estoque com base nas quantidades e nos preços dos produtos.
+
+🖥️ **Integração entre front-end e back-end**  
+Conexão entre a interface visual e a lógica responsável pelo processamento e armazenamento dos dados.
+
+🎨 **Estilização com CSS**  
+Criação de uma interface organizada e intuitiva para facilitar o gerenciamento dos produtos da cantina.
 
 ---
 
-## 🧠 Como o sistema funciona
+# 🛠️ Tecnologias Utilizadas
 
-### As duas classes (programação orientada a objetos)
+O projeto combina tecnologias de front-end e back-end para construir uma aplicação web funcional:
 
-**`Produto`** (`produto.py`) representa um lanche:
+💻 **HTML5**  
+Estrutura da página e dos formulários utilizados para cadastrar e visualizar os produtos.
 
-```python
-class Produto:
-    def __init__(self, nome, quantidade, preco_unitario, id=None):
-        ...
+🎨 **CSS3**  
+Estilização da interface, organização dos elementos e apresentação visual do sistema.
 
-    def valor_total(self):
-        return self.quantidade * self.preco_unitario   # quantidade x preço
-```
+⚡ **JavaScript**  
+Responsável pelas interações da página, pelas requisições à API e pela atualização das informações exibidas.
 
-**`Estoque`** (`estoque.py`) cuida do conjunto de produtos e do banco:
+🐍 **Python**  
+Linguagem utilizada para desenvolver a lógica do back-end e processar as operações do sistema.
 
-```python
-estoque = Estoque()              # cria a tabela e carrega o que já tem salvo
-produto = estoque.cadastrar("Pão de queijo", 24, 4.50)   # salva no SQLite
-estoque.listar()                 # devolve a lista de objetos Produto
-estoque.quantidade_total()       # soma das unidades
-estoque.valor_total()            # soma do valor de todos os produtos
-```
+🌶️ **Flask**  
+Microframework Python utilizado para criar as rotas da aplicação e disponibilizar a API.
 
-O `app.py` usa essas classes para montar as rotas da API.
+🗄️ **SQLite**  
+Banco de dados responsável por armazenar os registros dos produtos do estoque.
 
-### As rotas da API
-
-| Método   | Endereço             | O que faz                                  |
-| -------- | -------------------- | ------------------------------------------ |
-| `GET`    | `/`                  | abre a página do sistema                   |
-| `GET`    | `/produtos`          | lista todos os produtos do banco           |
-| `POST`   | `/produtos`          | cadastra um produto novo                   |
-| `DELETE` | `/produtos/<id>`     | exclui um produto                          |
-| `GET`    | `/resumo`            | totais do estoque (calculados no servidor) |
-
-O **CORS** está ativado no `app.py` com `CORS(app)`, para a página poder
-buscar os dados na API sem problema.
-
-### O lado do JavaScript (`static/script.js`)
-
-```javascript
-// GET: busca os produtos do banco e desenha na tela
-async function listarProdutos() {
-  const resposta = await fetch("http://localhost:5000/produtos");
-  return await resposta.json();
-}
-
-// POST: cadastra um produto novo
-async function cadastrarProduto(dados) {
-  const resposta = await fetch("http://localhost:5000/produtos", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(dados),
-  });
-  return await resposta.json();
-}
-```
-
-Depois do cadastro dar certo, o formulário é limpo, aparece a mensagem de
-sucesso e a lista é atualizada com `await carregarEstoque()` — **sem recarregar
-a página**. Todos os `fetch` estão dentro de `try/catch`, então se o servidor
-estiver fora do ar a pessoa vê uma mensagem em vez de a tela quebrar.
-
-> 💡 Se você mudar a porta do servidor, lembre de trocar a URL no começo do
-> `script.js` (`const API = "http://localhost:5000";`).
+🔗 **API REST e `fetch()`**  
+Comunicação entre o front-end e o back-end por meio de requisições HTTP, utilizando `GET` e `POST`.
 
 ---
 
-## 🚀 Publicando no GitHub
+# 🚀 Como Usar
 
-### O jeito fácil (sem digitar comando)
+1️⃣ Acesse o sistema Mordisco.  
+2️⃣ Cadastre um lanche ou produto informando seu nome, quantidade e preço.  
+3️⃣ Consulte a lista de produtos cadastrados.  
+4️⃣ Acompanhe as quantidades disponíveis na cantina.  
+5️⃣ Confira o valor total dos produtos registrados no estoque.
 
-1. Entre no **https://github.com/new** e crie o repositório:
-   - Nome: `mordisco`
-   - **Desmarque** "Add a README file" e "Add .gitignore" (o projeto já tem os dois)
-   - Clique em **Create repository**
-2. Dê dois cliques em **`publicar.bat`** e responda as 3 perguntas
-   (nome, e-mail e seu usuário do GitHub).
-3. Vai abrir uma janela do navegador para você entrar no GitHub — é só
-   confirmar. O repositório é atualizado e a página dele abre sozinha.
-
-### O jeito manual (se preferir o terminal)
-
-```bash
-git remote add origin https://github.com/SEU_USUARIO/mordisco.git
-git push -u origin main
-```
-
-> **Dica:** se o Git pedir senha, use um *Personal Access Token* (Settings →
-> Developer settings → Personal access tokens → Generate new token), **não** a
-> senha da sua conta. Se você tem o GitHub CLI instalado, `gh auth login`
-> resolve isso de uma vez.
-
-O `.gitignore` já está configurado: ele não sobe o `.venv` nem o banco de
-dados `estoque.db` para o GitHub.
+🍪 **Mais organização para a cantina, mais praticidade para controlar o estoque!**
 
 ---
 
-## 🩺 Problemas comuns
+# 👩‍💻 Autora
 
-| Situação | O que fazer |
-| --- | --- |
-| "Python não foi encontrado" | Instale o Python marcando **"Add Python to PATH"** e reinicie o computador. |
-| "Porta 5000 já está em uso" | Feche a outra janela do servidor (ou rode `iniciar.bat` de novo depois de fechá-la). |
-| A página abriu mas a lista está vazia | Normal: ainda não existe produto cadastrado. Cadastre o primeiro pelo formulário. |
-| Quero recomeçar do zero | Apague o arquivo `estoque.db` e abra o sistema de novo — ele cria um novo. |
-| Erro ao instalar as dependências | Precisa de internet na primeira instalação. Confira a conexão e rode o `instalar.bat` de novo. |
+Projeto desenvolvido por **Andriely**.
+
+Se você gostou do projeto, sinta-se à vontade para:
+
+⭐ Dar uma estrela no repositório  
+🍴 Fazer um fork  
+🚀 Contribuir com melhorias
 
 ---
 
-## ✏️ Créditos
-
-Projeto da **Atividade 3 — DWS (Desenvolvimento de Websites)**, 4º bimestre.
-Tecnologias: HTML, CSS, JavaScript puro, Python, Flask, Flask-Cors e SQLite.
+🍪✨ Obrigada por visitar o projeto **Mordisco — Estoque da Cantina**!
